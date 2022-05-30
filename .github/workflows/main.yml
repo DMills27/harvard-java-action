@@ -21,11 +21,10 @@ jobs:
         with:
           files: |
             *\*
-
-      - name: Run step if any of the listed files above change
-        if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
           for file in ${{ steps.changed-files-specific.outputs. all_changed_files }}; do
             FILEPATH=`$file | awk -F/ '{print FS $1}`
             echo $FILEPATH
-          done      
+          done  
+
+   
