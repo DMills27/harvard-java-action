@@ -27,5 +27,5 @@ jobs:
           for file in ${{ steps.changed-files-specific.outputs. all_changed_files }}; do
             FILEPATH=`sudo awk -v myvar="$file" '{print FS $1}'`
             BUIDPATH="${FILEPATH}\pom.xml"
-            echo $BUIDPATH
+            echo $FILEPATH
           done      
