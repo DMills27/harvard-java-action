@@ -25,7 +25,7 @@ jobs:
       - name: Run step if any of the listed files above change
         run: |
           for file in ${{ steps.changed-files-specific.outputs. all_changed_files }}; do
-            FILEPATH=`sudo awk -v myvar="$file" '{print FS $1}'`
+            FILEPATH=`awk -v myvar="$file" 'BEGIN{print FS myvar}'`
             BUIDPATH="${FILEPATH}\pom.xml"
-            echo $FILEPATH
+            echo $BUIDPATH
           done      
