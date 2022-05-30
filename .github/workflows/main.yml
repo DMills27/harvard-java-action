@@ -25,6 +25,6 @@ jobs:
       - name: Run step if any of the listed files above change
         run: |
           for file in ${{ steps.changed-files-specific.outputs. all_changed_files }}; do
-            sudo FILEPATH=`$file | awk -F/ '{print FS $1}'`
-            sudo echo $FILEPATH
+            FILEPATH=`$file | awk -F/ '{print FS $1}'`
+            echo $file
           done      
