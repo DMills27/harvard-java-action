@@ -15,17 +15,17 @@ jobs:
 
       - name: Run a one-line script
         run: echo Hello, world!
+      
+      - name: Get specific changed files
+        id: changed-files-specific
+        uses: tj-actions/changed-files@v14.5
+        with:
+          files: |
+            *\*
 
-      - name: Run a muti-line script
+      - name: Run step if any of the listed files above change
+        if: steps.changed-files-specific.outputs.any_changed == 'true'
         run: |
-          echo What is in this directory?
-          ls -a
-          echo
-          echo Is Java installed?
-          java -version
-          echo Is Git installed?
-          git --version
-          echo What about build tools?
-          mvn --version
-          gradle --version
-          ant -version
+          for file in ${{ steps.changed-files-specific.outputs. all_changed_files }}; do
+            echo "$file was modified"
+          done      
