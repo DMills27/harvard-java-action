@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
       - uses: ayltai/setup-graalvm@v1
         with:
-          java-version: 11
+          java-version: 7
           graalvm-version: 21.3.0
           native-image: true
 
